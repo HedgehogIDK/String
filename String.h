@@ -23,20 +23,14 @@ public:
         strcpy_s(str,SIZE, strUser);
         count++;
     }
+    void input();
+    void output() const;
+    static int getCount() {
+        return count;
+    }
     ~String() {
         delete[] str;
         count--;
-    }
-    void input() {
-        cin.ignore();
-        printf("¬ведите строку: ");
-        gets_s(str, SIZE);
-    }
-    void output() const {
-        printf("\n %s \n", str);
-    }
-    static int getCount() {
-        return count;
     }
 };
 
