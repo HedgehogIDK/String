@@ -6,45 +6,24 @@ using namespace std;
 class String {
 private:
     char* str;
-    int SIZE;
+    int size;
 
 public:
     static int count;
 
-    String() : SIZE{ 80 }, str{ new char[SIZE] } {
-        count++;
-    }
+    String() : str{ new char[80] }, size{ 80 } { count++; }
+    String(const char* strUser);
+    String(int sizeUser) :str{ new char[sizeUser] }, size{ sizeUser } { count++; };
+    String(int sizeUser, const char* strUser);
 
-    String(int size) : SIZE{ size }, str{ new char[size] } {
-        count++;
-    }
+    
+    String(String& User);
+    String(String&& obj)noexcept;
 
-    String(const char* strUser) {
-        SIZE = strlen(strUser) + 1;
-        str = new char[SIZE];
-        strcpy_s(str, SIZE, strUser);
-        count++;
-    }
+    void input();
+    void output() const;
 
-    String(const String& strUser) : SIZE{ strUser.SIZE }, str{ new char[strUser.SIZE] } {
-        strcpy_s(str, strUser.SIZE, strUser.str);
-        count++;
-    }
+    static int getCount() { return count; }
 
-    void input() {
-        gets_s(str, SIZE);
-    }
-
-    void output() const {
-        printf("\n%s\n", str);
-    }
-
-    static int getCount() {
-        return count;
-    }
-
-    ~String() {
-        delete[] str;
-        count--;
-    }
+    ~String();
 };
