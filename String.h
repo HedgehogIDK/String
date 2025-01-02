@@ -14,8 +14,8 @@ public:
     //Конструкторы
 
     String() : str{ new char[80] }, size{ 80 } { count++; }
-    String(const char* strUser);
-    String(int sizeUser) :str{ new char[sizeUser] }, size{ sizeUser } { count++; };
+    explicit String(const char* strUser);
+    explicit String(int sizeUser) :str{ new char[sizeUser] }, size{ sizeUser } { count++; };
     String(int sizeUser, const char* strUser);
 
     //Конструктор копирования 
