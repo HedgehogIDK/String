@@ -11,24 +11,24 @@ private:
 public:
     static int count;
 
-    //Конструкторы
+    //ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г»
 
     String() : str{ new char[80] }, size{ 80 } { count++; }
     explicit String(const char* strUser);
     explicit String(int sizeUser) :str{ new char[sizeUser] }, size{ sizeUser } { count++; };
     String(int sizeUser, const char* strUser);
 
-    //Конструктор копирования 
-    String(String& User);
-    //Конструктор переноса
+    //ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГї 
+    String(String& User)noexcept;
+    //ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГҐГ°ГҐГ­Г®Г±Г 
     String(String&& obj)noexcept;
 
-    //Акссесоры
+    //ГЂГЄГ±Г±ГҐГ±Г®Г°Г»
     void input();
     void output() const;
 
-    static int getCount() { return count; }
+    static int getCount()noexcept { return count; }
 
-    //Деструктор
-    ~String();
+    //Г„ГҐГ±ГІГ°ГіГЄГІГ®Г°
+    ~String()noexcept;
 };
